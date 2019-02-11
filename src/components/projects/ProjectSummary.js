@@ -11,8 +11,7 @@ const ProjectSummary = ({project}) => {
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted">{project.organizationName}</Card.Subtitle>
         <Card.Text>
-          Some quick example text to build on the card title and make up the bulk of
-          the card's content.
+          {project.content.slice(0, 200).length >= 195 ? project.content.slice(0, 200) + '...' : project.content}
         </Card.Text>
         <Link to={'/project/' + project.id}  key={project.id} >
           <Button variant="primary">View Project!</Button>
