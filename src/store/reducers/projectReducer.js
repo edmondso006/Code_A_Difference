@@ -12,13 +12,13 @@ const projectReducer = (state = initState, action) => {
       console.log('create project error', action.err);
       return state;
     case 'GET_PROJECTS':
-      console.log(action.projects);
+      //console.log(action.projects);
       return {
         ...state,
         projects: action.projects
       };
     case 'DELETE_PROJECT_SUCCESS':
-      console.log(action.project);
+      //console.log(action.project);
       return {
         ...state,
         projects: state.projects.filter(project => project !== action.project)

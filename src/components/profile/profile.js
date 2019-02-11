@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getUsersProjects } from './../../store/actions/projectActions';
-import ProfileProject from './../projects/profileProject';
-import { Link } from 'react-router-dom';
+import { getUsersProjects } from '../../store/actions/projectActions';
+import ProfileProject from './../profile/profileProject';
 import { Redirect } from 'react-router-dom';
 
 
@@ -17,7 +16,7 @@ class Profile extends Component {
 
   render(){
     const { auth, profile, projects} = this.props;
-    console.log(projects);
+    // console.log(projects);
     // console.log(auth);
     // console.log(profile);
     
@@ -26,15 +25,15 @@ class Profile extends Component {
 
     return (
       <div>
-        <div className="container section">
+        <div className="container">
           <div className="card">
             <div className="card-content">
-              <span className="card-title">Orgnaization Profile Information</span>
-              <span className="">Orgnaization Name: {profile.organizationName}</span>
+              <span className="card-title">Organization Profile Information</span>
+              <span className="">Organization Name: {profile.organizationName}</span>
               <br />
               <span className="">Email: {auth.email}</span>
-              
             </div>
+
             <div className="card-action grey lighten-4 grey-text">
               <a href="#">Edit Information</a>
             </div>
@@ -43,12 +42,12 @@ class Profile extends Component {
           <br />
           <h5>Your Projects:</h5>
 
-            
-
           <div className="row">
             { projects && projects.map(project => {
                 return (
-                  <ProfileProject className="col s6" project={project} />
+                  <div className="col s6" key={project.id}>
+                    <ProfileProject className="col s6" project={project} key={project.id} />
+                  </div>
                 )
               })
             }
@@ -56,7 +55,6 @@ class Profile extends Component {
             
         </div>
 
-        
       </div>
 
     )

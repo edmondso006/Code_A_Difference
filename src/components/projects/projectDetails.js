@@ -16,6 +16,8 @@ const ProjectDetails = (props) => {
           <div className="card-content">
             <span className="card-title">{project.title}</span>
             <p className="projectContent">{project.content}</p>
+            <br />
+            <h6>Contact Email: {project.contactEmail}</h6>
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Category: {project.category}</div>

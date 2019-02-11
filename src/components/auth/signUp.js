@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from './../../store/actions/authActions';
 
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+
 class SignUp extends Component {
 
   state = {
@@ -29,45 +34,43 @@ class SignUp extends Component {
     if(auth.uid) return <Redirect to="/" />
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Sign Up</h5>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange}/>
-          </div>
 
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange}/>
-          </div>
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <h3>Sign Up</h3>
+          <hr />
+          <Form.Text className="text-muted">
+            Please use the form below to sign up your organization. Only Non-Profit organizations will be able to sign up.
+          </Form.Text>
+          <br />
+          <Form.Group>
+            <Form.Label>Organization Name</Form.Label>
+            <Form.Control type="text" placeholder="Organization Name" id="organizationName" onChange={this.handleChange} />
+          </Form.Group>
 
-          <div className="input-field">
-            <label htmlFor="password">Confirm Password</label>
-            <input type="password" id="passwordConfirm" onChange={this.handleChange}/>
-          </div>
+          <Form.Group>
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" id="email" onChange={this.handleChange} />  
+          </Form.Group>
 
-          <div className="input-field">
-            <label htmlFor="organizationName">Organization Name</label>
-            <input type="text" id="organizationName" onChange={this.handleChange}/>
-          </div>
+          <Form.Group >
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" id="password" onChange={this.handleChange} />
+          </Form.Group>
 
-          {/* <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id="lastName" onChange={this.handleChange}/>
-          </div> */}
+          <Form.Group >
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control type="password" placeholder="Confirm Password" id="passwordConfirm" onChange={this.handleChange} />
+          </Form.Group>
 
-          <div className="red-text center">
-            { authError ? <p> { authError }</p> : null}
-          </div>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
 
-          <div className="input-field">
-            <button className="btn pink ligten-1 z-depth-0">SignUp</button>
-          </div>
+      { authError ?<Alert variant="danger"><p> { authError }</p></Alert> : null}
+      </Container>
 
-
-        </form>
-      </div>
     )
   }
 }

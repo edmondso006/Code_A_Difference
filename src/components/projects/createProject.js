@@ -8,7 +8,21 @@ class CreateProject extends Component {
   state = {
     title: '',
     content: '',
-    category: ''
+    category: '',
+    contactEmail: '',
+    validInput: null
+  }
+
+  validateInput = () => {
+    if(this.state.title !== '' && this.state.content !== '' && this.state.category !== '' && this.state.contactEmail !== ''){
+      this.setState({
+        validInput: true
+      });
+    } else {
+      this.setState({
+        validInput: false
+      });
+    }
   }
 
   handleChange = (e) => {
@@ -19,8 +33,21 @@ class CreateProject extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createProject(this.state);
-    this.props.history.push('/');   //redirect the user to home page. History is given on the router by default
+    console.log('handleSubmit');
+    this.validateInput();
+    console.log(this.state);
+    if(this.state.validInput){
+      console.log('Valid Input: Creating project');
+      let project = {
+        title: this.state.title,
+        content: this.state.content,
+        category: this.state.category,
+        contactEmail: this.state.contactEmail
+      }
+      this.props.createProject(project);
+      this.props.history.push('/');   //redirect the user to home page. History is given on the router by default
+    }
+    
   }
 
   handleRadioButtons = (e) => {
@@ -31,8 +58,8 @@ class CreateProject extends Component {
 
   render() {
     const { auth } = this.props;
-    
     if(!auth.uid) return <Redirect to="/signin" />
+    console.log(this.state);
 
     return (
       <div className="container">
@@ -46,6 +73,11 @@ class CreateProject extends Component {
           <div className="input-field">
             <label htmlFor="content">Project Details</label>
             <textarea className="materialize-textarea" id="content" onChange={this.handleChange}></textarea>
+          </div>
+
+          <div className="input-field">
+            <label htmlFor="content">Contact Email</label>
+            <input type="email" id="contactEmail" onChange={this.handleChange}/>
           </div>
           
           <p>
@@ -70,7 +102,11 @@ class CreateProject extends Component {
           </p>
 
           <div className="input-field">
-            <button className="btn pink ligten-1 z-depth-0">Create</button>
+            <button className="btn pink lighten-1 z-depth-0">Create</button>
+          </div>
+
+          <div className="red-text center">
+            { this.state.validInput ? null : <p>Please Enter All Information</p> }
           </div>
 
         </form>

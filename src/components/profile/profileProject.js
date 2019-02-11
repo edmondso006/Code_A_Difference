@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteProject } from './../../store/actions/projectActions';
+import { deleteProject } from '../../store/actions/projectActions';
+import { Link } from 'react-router-dom';
 
 class ProfileProject extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      deleteConfirm: false
+    }
   }
 
-  handleClick = (e) => {
+  handleClick = (e) => {          
+    {/* TODO: Alert are you sure you want to delete box */}
     e.preventDefault();
     this.props.deleteProject(this.props.project)
   }
 
   render(){
-    console.log(this.props.project);
     return (
       <div className="card s12 m6 project-summary">
         <div className="card-content grey-text text-darken-3">
@@ -25,7 +29,11 @@ class ProfileProject extends Component {
   
         <div className="card-action grey lighten-4 grey-text">
           <a href="#" onClick={this.handleClick} className="right-align">Delete</a>
+          {/* TODO: Alert are you sure you want to delete box */}
           <a href="#" className="right-align">Edit</a>
+          <Link to={'/project/' + this.props.project.id} key={this.props.project.id} >
+            View
+          </Link>
         </div>
       </div>
     )

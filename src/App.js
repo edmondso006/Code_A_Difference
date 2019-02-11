@@ -8,7 +8,7 @@ import ProjectDetails from './components/projects/projectDetails';
 import SignIn from './components/auth/signIn';
 import SignUp from './components/auth/signUp';
 import CreateProject from './components/projects/createProject';
-import Profile from './components/auth/profile';
+import Profile from './components/profile/profile';
 
 class App extends Component {
   render() {
