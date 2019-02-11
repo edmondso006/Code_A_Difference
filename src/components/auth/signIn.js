@@ -44,7 +44,7 @@ class SignIn extends Component {
 
           <Form.Group>
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="password" id="password" onChange={this.handleChange} />
+            <Form.Control type="password" placeholder="Password" id="password" onChange={this.handleChange} />
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -52,7 +52,7 @@ class SignIn extends Component {
           </Button>
 
         </Form>
-         { authError ?<Alert variant="danger"><p> { authError }</p></Alert> : null}
+        { authError ?<Alert variant="danger"><p> { authError }</p></Alert> : null}
       </Container>
 
     )

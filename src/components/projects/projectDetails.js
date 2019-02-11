@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {  firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
 import './projectDetails.css';
 
 
@@ -11,21 +13,28 @@ const ProjectDetails = (props) => {
   
   if(project){
     return(
-      <div className="container section project-details">
-        <div className="card">
-          <div className="card-content">
-            <span className="card-title">{project.title}</span>
-            <p className="projectContent">{project.content}</p>
-            <br />
-            <h6>Contact Email: {project.contactEmail}</h6>
-          </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>Category: {project.category}</div>
-            <div>Posted by: {project.organizationName}</div>
-            <div>{project.createdAt.slice(0, 15)}</div>
-          </div>
-        </div>
-      </div>
+      <Container style={{marginTop: '1rem'}}>
+        <Card>
+          <Card.Header>Contact Email: {project.contactEmail}</Card.Header>
+          <Card.Body>
+            <Card.Title>
+              {project.title}
+            </Card.Title>
+
+            <Card.Text>
+              {project.content}
+            </Card.Text>
+          </Card.Body>
+
+          <Card.Footer className="text-muted">
+              <div>Category: {project.category}</div>
+              <div>Posted by: {project.organizationName}</div>
+              <div>Posted Date: {project.createdAt.slice(0, 15)}</div>
+          </Card.Footer>
+          
+        </Card>
+      </Container>
+      
     )
   } else {
     return(

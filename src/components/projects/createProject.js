@@ -3,6 +3,11 @@ import { connect } from 'react-redux';
 import { createProject } from './../../store/actions/projectActions';
 import { Redirect } from 'react-router-dom';
 
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+
+
 class CreateProject extends Component {
 
   state = {
@@ -50,6 +55,7 @@ class CreateProject extends Component {
     
   }
 
+  // TODO: Validation when click one and then the other
   handleRadioButtons = (e) => {
     this.setState({
       category: e.target.id
@@ -62,55 +68,43 @@ class CreateProject extends Component {
     console.log(this.state);
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="grey-text text-darken-3">Post New Project</h5>
-          <div className="input-field">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange}/>
-          </div>
+     <Container>
+       <Form onSubmit={this.handleSubmit}>
+        <h3>Post New Project</h3>
+        <hr />
 
-          <div className="input-field">
-            <label htmlFor="content">Project Details</label>
-            <textarea className="materialize-textarea" id="content" onChange={this.handleChange}></textarea>
-          </div>
+        <Form.Group>
+          <Form.Label>Title</Form.Label>
+          <Form.Control type="text" placeholder="Project Title" id="title" onChange={this.handleChange} />
+        </Form.Group>
 
-          <div className="input-field">
-            <label htmlFor="content">Contact Email</label>
-            <input type="email" id="contactEmail" onChange={this.handleChange}/>
-          </div>
-          
-          <p>
-            <label>
-              <input className="with-gap" id="Simple Website" name="group1" type="radio" onChange={this.handleRadioButtons}  />
-              <span>Simple Website</span>
-            </label>
-          </p>
+        <Form.Group>
+          <Form.Label>Contact Email</Form.Label>
+          <Form.Control type="email" placeholder="Contact Email" id="email" onChange={this.handleChange} />
+        </Form.Group>
 
-          <p>
-            <label>
-              <input className="with-gap" id="Web App" name="group1" type="radio" onChange={this.handleRadioButtons}  />
-              <span>Web App</span>
-            </label>
-          </p>
- 
-          <p>
-            <label>
-              <input className="with-gap" id="Mobile App" name="group1" type="radio" onChange={this.handleRadioButtons} />
-              <span>Mobile App</span>
-            </label>
-          </p>
+        <Form.Group>
+          <Form.Label>Description</Form.Label>
+          <Form.Control type="text" as="textarea" placeholder="Description" id="content" onChange={this.handleChange} />
+        </Form.Group>
 
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Create</button>
-          </div>
+        <Form.Group>
+          <Form.Check label="Simple Website" id="Simple Website" onChange={this.handleRadioButtons} />
+          <Form.Check label="Web App" id="Web App" onChange={this.handleRadioButtons} />
+          <Form.Check label="Mobile App" id="Mobile App" onChange={this.handleRadioButtons} />
+          <Form.Check label="Other" id="Other" onChange={this.handleRadioButtons} />
 
-          <div className="red-text center">
-            { this.state.validInput ? null : <p>Please Enter All Information</p> }
-          </div>
+        </Form.Group>
 
-        </form>
-      </div>
+
+        <Button variant="primary" type="submit">
+            Post!
+        </Button>
+        
+        {/* { this.state.validInput ? null : <Alert variant="danger"><p>Please Enter All Information</p></Alert> } */}
+       </Form>
+        
+      </Container>
     )
   }
 }

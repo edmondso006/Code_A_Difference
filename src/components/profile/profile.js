@@ -4,6 +4,8 @@ import { getUsersProjects } from '../../store/actions/projectActions';
 import ProfileProject from './../profile/profileProject';
 import { Redirect } from 'react-router-dom';
 
+import Container from 'react-bootstrap/Container';
+import Card from 'react-bootstrap/Card';
 
 class Profile extends Component {
 
@@ -24,38 +26,34 @@ class Profile extends Component {
 
 
     return (
-      <div>
-        <div className="container">
-          <div className="card">
-            <div className="card-content">
-              <span className="card-title">Organization Profile Information</span>
+      <Container style={{marginTop: '1rem'}}>
+        <Card>
+          <Card.Header as="h5" >Organization Profile Information</Card.Header>
+          <Card.Body>
+            <Card.Text>
               <span className="">Organization Name: {profile.organizationName}</span>
               <br />
               <span className="">Email: {auth.email}</span>
-            </div>
+            </Card.Text>
 
-            <div className="card-action grey lighten-4 grey-text">
-              <a href="#">Edit Information</a>
-            </div>
-          </div>
+            <Card.Link href="#">Edit Information</Card.Link>
+          </Card.Body>
+        </Card>
+      
+        <br />
+        <h5>Your Organizations Projects:</h5>
 
-          <br />
-          <h5>Your Projects:</h5>
-
-          <div className="row">
-            { projects && projects.map(project => {
-                return (
-                  <div className="col s6" key={project.id}>
-                    <ProfileProject className="col s6" project={project} key={project.id} />
-                  </div>
-                )
-              })
-            }
-          </div>
-            
+        <div className="row">
+          { projects && projects.map(project => {
+            return (
+              <div className="col s6" key={project.id}>
+                <ProfileProject className="col s6" project={project} key={project.id} />
+              </div>
+              )
+            })
+          }
         </div>
-
-      </div>
+      </Container>
 
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, NavLink }  from 'react-router-dom';
+import { Link }  from 'react-router-dom';
 import SignedInLinks from './signedInLinks';
 import SignedOutLinks from './signedOutLinks';
 

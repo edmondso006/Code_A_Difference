@@ -1,6 +1,5 @@
 import React from 'react';
 import ProjectSummary from './ProjectSummary';
-import { Link } from 'react-router-dom';
 
 const ProjectList = ({projects}) => {
   return (
