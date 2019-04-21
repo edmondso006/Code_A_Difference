@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-
+import Alert from 'react-bootstrap/Alert';
 
 class CreateProject extends Component {
 
@@ -20,29 +20,22 @@ class CreateProject extends Component {
 
   validateInput = () => {
     if(this.state.title !== '' && this.state.content !== '' && this.state.category !== '' && this.state.contactEmail !== ''){
-      this.setState({
-        validInput: true
-      });
-    } else {
-      this.setState({
-        validInput: false
-      });
+      return true;
+    }else {
+      return false;
     }
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    })
+    }); 
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('handleSubmit');
-    this.validateInput();
     console.log(this.state);
-    if(this.state.validInput){
-      console.log('Valid Input: Creating project');
+    if(this.validateInput()){
       let project = {
         title: this.state.title,
         content: this.state.content,
@@ -50,11 +43,8 @@ class CreateProject extends Component {
         contactEmail: this.state.contactEmail
       }
       this.props.createProject(project);
-      this.props.history.push('/');   //redirect the user to home page. History is given on the router by default
-    }else {
-      console.log('this.state.valid input is not vlaid');
+      this.props.history.push('/projects');   //redirect the user to projects page. History is given on the router by default
     }
-    
   }
 
   // TODO: Validation when click one and then the other
@@ -103,7 +93,7 @@ class CreateProject extends Component {
             Post!
         </Button>
         
-        {/* { this.state.validInput ? null : <Alert variant="danger"><p>Please Enter All Information</p></Alert> } */}
+        {/* { this.validateInput() ? <Alert variant="danger"><p>Please Enter All Information</p></Alert> : null } */}
        </Form>
         
       </Container>

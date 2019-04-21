@@ -8,18 +8,19 @@ class Home extends Component {
     render(){
         return (
             <div>
-              <Jumbotron  className="bg-light">
+              <Jumbotron  className="bg-light" style={{marginBottom: '0px'}}>
 
                 <Container>
+                <img src={TeamImage} alt='team' style={{height: '50%', width: '50%', display: 'block', margin: 'auto'}} />
+
                   <h1>Make A Difference!</h1>
-                  <img src={TeamImage} alt='team' style={{height: '50%', width: '50%', display: 'block', margin: 'auto'}} />
 
                   <p style={{marginTop: '2%'}}>
                     Are you looking for a meaningful project that will benefit a local non-profile? Are you looking
                     for things to put on your personal portfolio to impress potential employers? Take a look at these
                     real projects that local profits need help with and offer your services in exchange for learning & experience!
                   </p>
-                  <Button variant="outline-dark"><Link to='/projects' style={{textDecoration: 'none', color: 'inherit'}}>Projects</Link></Button>
+                  <Button variant="outline-dark"><Link to='/projects' style={{textDecoration: 'none', color: 'inherit'}}>View Projects!</Link></Button>
                 </Container>
                 
 
@@ -27,9 +28,8 @@ class Home extends Component {
 
             
               <Row>
-                {/* bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden */}
                   <Col sm={6} className="bg-dark text-white text-center overflow-hidden">
-                    <div className="my-3 py-3" style={{}}>
+                    <div className="my-3 py-3" style={{marginRight: '1rem', marginLeft: '1rem'}}>
                       <h4 className="display-5">For Devs</h4>
                       <p className="lead">Build something that matters!</p>
                       <img src={CodingImage} alt="coder" style={{height: '15rem', width: '15rem'}}></img>
@@ -44,9 +44,8 @@ class Home extends Component {
                     </div>
                   </Col>
 
-                  {/* bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden */}
                   <Col sm={6} className="bg-light text-center overflow-hidden">
-                    <div className="my-3 py-3">
+                    <div className="my-3 py-3" style={{marginRight: '1rem', marginLeft: '1rem'}}>
                       <h4 className="display-5">For Non-Profits</h4>
                       <p className="lead">Help developers grow!</p>
                       <img src={NonProfitImage} alt="non-profit" style={{height: '15rem', width: '15rem'}}></img>
