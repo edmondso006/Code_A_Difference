@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "install": "^0.12.2",
-    "npm": "^6.7.0",
+    "npm": "^6.9.0",
     "redux-devtools-extension": "^2.13.7"
   }
 }

@@ -9,6 +9,7 @@ import SignIn from './components/auth/signIn';
 import SignUp from './components/auth/signUp';
 import CreateProject from './components/projects/createProject';
 import Profile from './components/profile/profile';
+import Home from './components/home';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
           <NavBar />
 
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Home} />
+            <Route path="/projects" component={Dashboard} />
             <Route path="/project/:id" component={ProjectDetails} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />

@@ -51,6 +51,8 @@ class CreateProject extends Component {
       }
       this.props.createProject(project);
       this.props.history.push('/');   //redirect the user to home page. History is given on the router by default
+    }else {
+      console.log('this.state.valid input is not vlaid');
     }
     
   }
@@ -80,7 +82,7 @@ class CreateProject extends Component {
 
         <Form.Group>
           <Form.Label>Contact Email</Form.Label>
-          <Form.Control type="email" placeholder="Contact Email" id="email" onChange={this.handleChange} />
+          <Form.Control type="email" placeholder="Contact Email" id="contactEmail" onChange={this.handleChange} />
         </Form.Group>
 
         <Form.Group>

@@ -11,7 +11,6 @@ import Col from 'react-bootstrap/Col';
 
 class Dashboard extends Component {
   render(){
-    //console.log(this.props);
     const { projects } = this.props;
     return (
       <Container>

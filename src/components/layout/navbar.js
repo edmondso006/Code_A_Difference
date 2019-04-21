@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link }  from 'react-router-dom';
 import SignedInLinks from './signedInLinks';
 import SignedOutLinks from './signedOutLinks';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = (props) => {
   const { profile, auth } = props;
@@ -11,18 +12,18 @@ const NavBar = (props) => {
 
 
   return (
-    
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <Link to="/" className="navbar-brand">CodeADifference</Link>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            { links }
-          </ul>
-        </div>
-      </nav>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar.Brand>
+        <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>CodeADifference</Link>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+      <Nav className="mr-auto">
+        <Nav>{ links }</Nav>
+      </Nav> 
+      </Navbar.Collapse>
+    </Navbar>
+
   )
 
 }
