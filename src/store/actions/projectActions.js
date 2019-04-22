@@ -3,7 +3,6 @@
 //Dispatch function dispatches an action to the reducer
 export const createProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
-    console.log('create project');
     //Make async call to db here
     //Pausing the dispatch until we get data back from the db
     const firestore = getFirestore();
@@ -57,3 +56,4 @@ export const deleteProject = (project) => {
       })
   }
 }
+

@@ -1,5 +1,6 @@
 const initState = {
-  authError: null
+  authError: null,
+  updateError: null
 }
 
 const authReducer = (state = initState, action) => {
@@ -33,6 +34,16 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         authError: action.err.message
+      }
+    case 'UPDATE_SUCCESS':
+      console.log('update success');
+      return {
+        ...state
+      }
+    case 'UPDATE_ERROR':
+      return {
+        ...state,
+        updateError: action.err.message
       }
     default:
       return state

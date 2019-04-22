@@ -25,7 +25,7 @@ export const signOut = () => {
 }
 
 export const signUp = (newUser) => {
-  //Need both firebase and firestore because we are storing additional infomation about user in firestore. UID = primary key
+  //Need both firebase and firestore because we are storing additional information about user in firestore. UID = primary key
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
@@ -50,5 +50,22 @@ export const signUp = (newUser) => {
     }
 
     
+  }
+}
+
+export const updateProfile = (profileUID, newInformation) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+    console.log(profileUID);
+    firestore.collection('users').doc(`${profileUID}`).update(newInformation)
+      .then(() => {
+        dispatch({ type: 'UPDATE_SUCCESS'})
+      })
+      .catch(() => {
+        let err = { message: 'Error updating profile. Please try again in a few moments' }
+        dispatch({ type: 'UPDATE_ERROR', err})
+      });
+
   }
 }
