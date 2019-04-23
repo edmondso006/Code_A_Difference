@@ -12,7 +12,7 @@ export const createProject = (project) => {
       ...project,
       organizationName: profile.organizationName,
       authorid: authID,
-      createdAt: new Date().toString()
+      createdAt: new Date()
     }).then(() => {
       //calling dispatch then resumes the dispatch to the reducer
       dispatch({type: 'CREATE_PROJECT', project})

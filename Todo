@@ -3,12 +3,13 @@ Features:
     + Edit Organization information (3)
         + Can only edit organization name currently.
         + Need: Email, Password
-    + Redo projects
+    + Redo projects (3)
     + Ordering of projects in dashboard (1)
     + Fix active in navbar (1)
     + Add confirmation box to logout button before it actually logs you out (2)
     + Ability to add Organization profile picture (3)
     + Filter projects by category (2)
+    + Tags for projects (3)
 Bugs:
     + After editing a Organization name it doesn't update on the project list page (2)
     + Need to refresh all projects in profile page or in general after an edit has been made

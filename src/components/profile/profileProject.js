@@ -34,6 +34,8 @@ class ProfileProject extends Component {
   }
 
   render(){
+    let date = new Date(this.props.project.createdAt);
+
     return (
       <div>
         <Card style={{ marginTop: '1rem' }}>
@@ -44,7 +46,7 @@ class ProfileProject extends Component {
 
             <Card.Text>
               Category: {this.props.project.category}
-              {this.props.project.createdAt.slice(0, 15)}
+              {date.toLocaleDateString()}
             </Card.Text>
           </Card.Body>
 

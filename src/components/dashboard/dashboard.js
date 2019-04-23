@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
-import Notifications from './notifications';
 import ProjectList from './../projects/projectList';
+import GuideLines from './guideLines';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 class Dashboard extends Component {
   render(){
     const { projects } = this.props;
     return (
-      <Container>
+      <Container className="bg-light">
         <Row>
-          <Col>
+          <Col sm={8}>
             <ProjectList projects={projects} />
           </Col>
-          <Col>
-            <Notifications />
+          <Col sm={4}>
+            <GuideLines />
           </Col>
         </Row>
       </Container>
@@ -38,6 +38,9 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     //causes the firestore reducer to sync to projects collection
-    { collection: 'projects' }
+    { 
+      collection: 'projects',
+      orderBy: ['createdAt', 'desc']
+    }
   ])
 )(Dashboard);

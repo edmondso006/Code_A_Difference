@@ -4,6 +4,7 @@ import { Link }  from 'react-router-dom';
 import SignedInLinks from './signedInLinks';
 import SignedOutLinks from './signedOutLinks';
 import { Navbar, Nav } from 'react-bootstrap';
+import Logo from './../../Images/CodeADifference.png';
 
 const NavBar = (props) => {
   const { profile, auth } = props;
@@ -15,6 +16,13 @@ const NavBar = (props) => {
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>
         <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>CodeADifference</Link>
+        {/* <img
+        src={Logo}
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+        alt="Logo"
+      /> */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">

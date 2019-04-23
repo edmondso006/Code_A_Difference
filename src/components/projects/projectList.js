@@ -1,16 +1,18 @@
 import React from 'react';
 import ProjectSummary from './ProjectSummary';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const ProjectList = ({projects}) => {
   return (
     <div>
-    {/* Checking to make sure that there are projects and then mapping*/}
       { projects && projects.map(project => {
         return (
-          <ProjectSummary project={project} key={project.id}/>
+          <Row key={project.id}>
+            <ProjectSummary project={project} />
+          </Row>
         )
       })}
-
     </div>
   )
 }
