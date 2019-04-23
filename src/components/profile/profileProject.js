@@ -49,9 +49,9 @@ class ProfileProject extends Component {
           </Card.Body>
 
           <Card.Body>
-            <Button onClick={this.handleShow}>Delete</Button>
-            <Card.Link href="#">Edit</Card.Link>
-            <Link to={'/project/' + this.props.project.id} key={this.props.project.id} className="card-link" >
+            <a onClick={this.handleShow} className="card-link">Delete</a>
+            <Link to={'/edit/' + this.props.project.id} className="card-link">Edit</Link>
+            <Link to={'/project/' + this.props.project.id} className="card-link">
               View
             </Link>
           </Card.Body>

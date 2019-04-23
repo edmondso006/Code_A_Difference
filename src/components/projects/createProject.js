@@ -10,18 +10,22 @@ import Alert from 'react-bootstrap/Alert';
 
 class CreateProject extends Component {
 
-  state = {
-    title: '',
-    content: '',
-    category: '',
-    contactEmail: '',
-    validInput: null
+  constructor(props){
+    super(props);
+    this.state = {
+      title: '',
+      content: '',
+      category: '',
+      contactEmail: '',
+      validInput: null
+    }
   }
 
   validateInput = () => {
     if(this.state.title !== '' && this.state.content !== '' && this.state.category !== '' && this.state.contactEmail !== ''){
       return true;
     }else {
+      this.setState({ validInput: false })
       return false;
     }
   }
@@ -92,8 +96,8 @@ class CreateProject extends Component {
         <Button variant="primary" type="submit">
             Post!
         </Button>
-        
-        {/* { this.validateInput() ? <Alert variant="danger"><p>Please Enter All Information</p></Alert> : null } */}
+
+        { this.state.validInput == null ? null : <Alert variant="danger"><p>Please Enter All Information</p></Alert> }
        </Form>
         
       </Container>

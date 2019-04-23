@@ -55,7 +55,6 @@ class Profile extends Component {
 
   render(){
     const { auth, profile, projects, authReducer} = this.props;
-    console.log(authReducer);
     if(!auth.uid) return <Redirect to="/signin" />
 
     return (

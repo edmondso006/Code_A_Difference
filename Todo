@@ -1,5 +1,5 @@
 Features:
-    + Edit Project (3)
+    + Edit Project (3) DONE
     + Edit Organization information (3)
         + Can only edit organization name currently.
         + Need: Email, Password
@@ -8,5 +8,11 @@ Features:
     + Fix active in navbar (1)
     + Add confirmation box to logout button before it actually logs you out (2)
     + Ability to add Organization profile picture (3)
+    + Filter projects by category (2)
 Bugs:
     + After editing a Organization name it doesn't update on the project list page (2)
+    + Need to refresh all projects in profile page or in general after an edit has been made
+
+Other:
+    + Refactor code and pull out duplicate functions into its own file (2)
+    + Fix all imports in reactbootstrap (1)

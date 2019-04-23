@@ -1,6 +1,7 @@
 const initState = {
   projects: [
-  ]
+  ],
+  updateProjectError: null
 }
 
 const projectReducer = (state = initState, action) => {
@@ -22,6 +23,15 @@ const projectReducer = (state = initState, action) => {
       return {
         ...state,
         projects: state.projects.filter(project => project !== action.project)
+      }
+    case 'UPDATE_PROJECT_SUCCESS':
+      return {
+        ...state
+      }
+    case 'UPDATE_PROJECT_ERROR':
+      return {
+        ...state,
+        updateProjectError: action.errMSG.message
       }
     default:
       return state

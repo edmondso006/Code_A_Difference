@@ -48,8 +48,6 @@ export const signUp = (newUser) => {
       let err = {message: 'Passwords do not match!'};
       dispatch({ type: 'SIGNUP_ERROR', err})
     }
-
-    
   }
 }
 
@@ -66,6 +64,5 @@ export const updateProfile = (profileUID, newInformation) => {
         let err = { message: 'Error updating profile. Please try again in a few moments' }
         dispatch({ type: 'UPDATE_ERROR', err})
       });
-
   }
 }

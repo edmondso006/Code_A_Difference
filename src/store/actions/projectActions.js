@@ -57,3 +57,21 @@ export const deleteProject = (project) => {
   }
 }
 
+export const updateProject = (projectID, updatedProject) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+ 
+    console.log(updatedProject);
+    firestore.collection('projects').doc(`${projectID}`).update(updatedProject)
+      .then(() => {
+        dispatch({ type: 'UPDATE_PROJECT_SUCCESS'})
+      })
+      .catch((err) => {
+        console.log(err);
+        let errMSG = { message: 'Error updating a project. Please try again in a few moments' }
+        dispatch({ type: 'UPDATE_PROJECT_ERROR', errMSG})
+      });
+  }
+}
+
+
