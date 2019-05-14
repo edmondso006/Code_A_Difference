@@ -13,16 +13,19 @@ class Dashboard extends Component {
   render(){
     const { projects } = this.props;
     return (
-      <Container className="bg-light">
-        <Row>
-          <Col sm={8}>
-            <ProjectList projects={projects} />
-          </Col>
-          <Col sm={4}>
-            <GuideLines />
-          </Col>
-        </Row>
-      </Container>
+      <div className="bg-light">
+        <Container className="bg-light">
+          <Row>
+            <Col sm={8}>
+              <ProjectList projects={projects} />
+            </Col>
+            <Col sm={4}>
+              <GuideLines />
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      
     )
   }
 }

@@ -3,7 +3,7 @@ Features:
     + Edit Organization information (3)
         + Can only edit organization name currently.
         + Need: Email, Password
-    + Redo projects (3)
+    + Redo projects (3) WORKING
     + Ordering of projects in dashboard (1)
     + Fix active in navbar (1)
     + Add confirmation box to logout button before it actually logs you out (2)

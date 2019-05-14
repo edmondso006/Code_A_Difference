@@ -16,9 +16,11 @@ class Home extends Component {
                   <h1>Make A Difference!</h1>
 
                   <p style={{marginTop: '2%'}}>
-                    Are you looking for a meaningful project that will benefit a local non-profile? Are you looking
-                    for things to put on your personal portfolio to impress potential employers? Take a look at these
-                    real projects that local profits need help with and offer your services in exchange for learning & experience!
+                    Utilizing the power of developers looking to perfect their craft, CodeADifference is empowering
+                    local organizations to better serve their community through new applications and websites. New developers
+                    gain skills and insights that will give them a competitive advantage in the industry. Organizations are
+                    able to save money, and spend it really matters, in the community. Come and help us make the world
+                    a better place for everyone!
                   </p>
                   <Button variant="outline-dark"><Link to='/projects' style={{textDecoration: 'none', color: 'inherit'}}>View Projects!</Link></Button>
                 </Container>
