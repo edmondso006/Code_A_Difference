@@ -17,8 +17,9 @@ class Profile extends Component {
   constructor(props){
     super(props);
     this.state = {
-      updatedName: '',
-      show: false
+      show: false,
+      name: '',
+      about: '',
     }
   }
 
@@ -29,6 +30,14 @@ class Profile extends Component {
     }
   }
 
+  //Forces the component to render and reset the state when the props are updated
+  componentWillReceiveProps = (nextProps) => {
+    this.setState({
+      name: nextProps.profile.organizationName,
+      about: nextProps.profile.about
+    })
+  }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -36,13 +45,17 @@ class Profile extends Component {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(this.props.profile);
-    let updatedProfile = this.props.profile;
-    updatedProfile.organizationName = this.state.updatedName;
-    console.log(this.props.auth);
-    this.props.updateProfile(this.props.auth.uid, updatedProfile);
-    this.handleClose();
+    if(this.state.name){
+      e.preventDefault();
+      console.log(this.props.profile);
+      let updatedProfile = this.props.profile;
+      updatedProfile.organizationName = this.state.name;
+      updatedProfile.about = this.state.about;
+      console.log(this.props.auth);
+      this.props.updateProfile(this.props.auth.uid, updatedProfile);
+      this.handleClose();
+    }
+
   }
 
   handleClose = () => {
@@ -66,6 +79,8 @@ class Profile extends Component {
               <span className="">Organization Name: {profile.organizationName}</span>
               <br />
               <span className="">Email: {auth.email}</span>
+              <br />
+              <span>About your organization: {profile.about}</span>
             </Card.Text>
 
             <Button onClick={this.handleShow}>Edit</Button>
@@ -96,7 +111,11 @@ class Profile extends Component {
             <Form onSubmit={this.handleSubmit} style={{marginTop: '0'}}>
               <Form.Group>
                 <Form.Label>Organization Name</Form.Label>
-                <Form.Control type="text" placeholder="Updated Organization Name" id="updatedName" onChange={this.handleChange} />
+                <Form.Control type="text" placeholder="Updated Organization Name" id="name" value={this.state.name} onChange={this.handleChange} />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>About Organization</Form.Label>
+                <Form.Control type="text" as="textarea" placeholder="Updated about organization" id="about" value={this.state.about} onChange={this.handleChange} />
               </Form.Group>
             </Form>
           </Modal.Body>

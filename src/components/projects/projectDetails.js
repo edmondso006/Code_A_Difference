@@ -5,34 +5,55 @@ import { compose } from 'redux';
 
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import './projectDetails.css';
 
 
 const ProjectDetails = (props) => {
   const { project } = props;
-  
+  console.log(props);
   if(project){
     return(
       <Container style={{marginTop: '1rem'}}>
-        <Card>
-          <Card.Header>Contact Email: {project.contactEmail}</Card.Header>
-          <Card.Body>
-            <Card.Title>
-              {project.title}
-            </Card.Title>
+        <Row>
+          <Col sm={4}>
+            <Card>
+              <Card.Body>
+                <Card.Title>
+                  About {project.organizationName}
+                </Card.Title>
+                <Card.Text>
+                  { project.aboutOrg }
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
 
-            <Card.Text>
-              {project.content}
-            </Card.Text>
-          </Card.Body>
+          <Col sm={8}>
+            <Card>
+              <Card.Header>Contact Email: {project.contactEmail}</Card.Header>
+                <Card.Body>
+                  <Card.Title>
+                  {project.title}
+                </Card.Title>
 
-          <Card.Footer className="text-muted">
-              <div>Category: {project.category}</div>
-              <div>Posted by: {project.organizationName}</div>
-              <div>Posted Date: {project.createdAt.slice(0, 15)}</div>
-          </Card.Footer>
-          
-        </Card>
+                <Card.Text>
+                  {project.content}
+                </Card.Text>
+              </Card.Body>
+
+              <Card.Footer className="text-muted">
+                  <div>Category: {project.category}</div>
+                  <div>Posted by: {project.organizationName}</div>
+                  {/* <div>Posted Date: {project.createdAt.slice(0, 15)}</div> */}
+              </Card.Footer>
+            </Card>
+          </Col>
+        </Row>
+      
+        
       </Container>
       
     )

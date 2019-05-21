@@ -3,17 +3,21 @@ Features:
     + Edit Organization information (3)
         + Can only edit organization name currently.
         + Need: Email, Password
-    + Redo projects (3) WORKING
+    + Redo projects (3) DONE FOR NOW
+    + Redo profile page
+    + Projects page (3) WORKING
     + Ordering of projects in dashboard (1)
     + Fix active in navbar (1)
     + Add confirmation box to logout button before it actually logs you out (2)
     + Ability to add Organization profile picture (3)
     + Filter projects by category (2)
     + Tags for projects (3)
+    + Write unit tests
 Bugs:
     + After editing a Organization name it doesn't update on the project list page (2)
     + Need to refresh all projects in profile page or in general after an edit has been made
-
+    + CreatedAt bug when calling slice on CreatedAt DONE (Storing date as a string instead of a date object in firebase)
+    + Firebase errors in console when logging out of application
 Other:
     + Refactor code and pull out duplicate functions into its own file (2)
     + Fix all imports in reactbootstrap (1)

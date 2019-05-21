@@ -35,7 +35,8 @@ export const signUp = (newUser) => {
       .then((res) => {
         return firestore.collection('users').doc(res.user.uid).set({
           organizationName: newUser.organizationName,
-          initials: newUser.organizationName[0]
+          initials: newUser.organizationName[0],  //Can probably get rid of
+          about: newUser.aboutOrg
         })
       }).then(() => {
         dispatch({ type: 'SIGNUP_SUCCESS' })
@@ -44,7 +45,7 @@ export const signUp = (newUser) => {
         dispatch({ type: 'SIGNUP_ERROR', err})
       })
     } else {
-      console.log('passowrd does not match')
+      console.log('password does not match')
       let err = {message: 'Passwords do not match!'};
       dispatch({ type: 'SIGNUP_ERROR', err})
     }
@@ -56,6 +57,7 @@ export const updateProfile = (profileUID, newInformation) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
     console.log(profileUID);
+    console.log(newInformation);
     firestore.collection('users').doc(`${profileUID}`).update(newInformation)
       .then(() => {
         dispatch({ type: 'UPDATE_SUCCESS'})

@@ -15,6 +15,7 @@ class SignUp extends Component {
     password: '',
     passwordConfirm: '',
     organizationName: '',
+    aboutOrg: ''
   }
 
   handleChange = (e) => {
@@ -62,6 +63,13 @@ class SignUp extends Component {
             <Form.Label>Confirm Password</Form.Label>
             <Form.Control type="password" placeholder="Confirm Password" id="passwordConfirm" onChange={this.handleChange} />
           </Form.Group>
+
+          <Form.Group >
+            <Form.Label>About Your Organization</Form.Label>
+            <Form.Control type="text" as="textarea" placeholder="Tell us, and the developers about your organization (Mission Statement)" id="aboutOrg" onChange={this.handleChange} />
+          </Form.Group>
+
+
 
           <Button variant="primary" type="submit">
             Submit
