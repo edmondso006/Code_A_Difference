@@ -56,11 +56,28 @@ export const updateProfile = (profileUID, newInformation) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
+    const authID = getState().firebase.auth.uid;
+
     console.log(profileUID);
     console.log(newInformation);
     firestore.collection('users').doc(`${profileUID}`).update(newInformation)
       .then(() => {
-        dispatch({ type: 'UPDATE_SUCCESS'})
+        //Perform query to get all of the users projects to update them
+        // OH BOY OH BOY THIS PROBS NEEDS REFACTORED 
+        firestore.collection('projects').where('authorid',  '==', authID).get()
+          .then((res) => {
+            res.forEach(doc => {
+              let project = doc.data;
+              project.id = doc.id;
+              firestore.collection('projects').doc(`${project.id}`).update(newInformation)
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+
+            })
+          })
+          .catch((err) => console.log(err));
+
+          //dispatch({ type: 'UPDATE_SUCCESS'})
       })
       .catch(() => {
         let err = { message: 'Error updating profile. Please try again in a few moments' }

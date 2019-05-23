@@ -32,6 +32,7 @@ class Profile extends Component {
 
   //Forces the component to render and reset the state when the props are updated
   componentWillReceiveProps = (nextProps) => {
+    console.log(nextProps);
     this.setState({
       name: nextProps.profile.organizationName,
       about: nextProps.profile.about

@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div >
+        <div className="bg-light" style={{minHeight: '100%', height: 'auto'}}>
           <NavBar />
 
           <Switch>

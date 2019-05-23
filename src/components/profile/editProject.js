@@ -29,6 +29,16 @@ class EditProject extends Component {
         }); 
     }
 
+     //Forces the component to render and reset the state when the props are updated
+    componentWillReceiveProps = (nextProps) => {
+      this.setState({
+        title: nextProps.project.title,
+        content: nextProps.project.content,
+        category: nextProps.project.category,
+        contactEmail: nextProps.project.contactEmail
+      })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         //TODO: Validate input
@@ -78,24 +88,23 @@ class EditProject extends Component {
 
                     <Form.Group>
                         <Form.Label>Title</Form.Label>
-                        <Form.Control type="text" id="title" defaultValue={this.props.project.title} onChange={this.handleChange}  />
+                        <Form.Control type="text" id="title" value={this.state.title} onChange={this.handleChange}  />
                     </Form.Group>
 
                     <Form.Group>
                         <Form.Label>Contact Email</Form.Label>
-                        <Form.Control type="email"  id="contactEmail"  defaultValue={this.props.project.contactEmail} onChange={this.handleChange} />
+                        <Form.Control type="email"  id="contactEmail"  value={this.state.contactEmail} onChange={this.handleChange} />
                     </Form.Group>
 
                     <Form.Group>
                         <Form.Label>Description</Form.Label>
-                        <Form.Control type="text" as="textarea" id="content" defaultValue={this.props.project.content}onChange={this.handleChange} />
+                        <Form.Control type="text" as="textarea" id="content" value={this.state.content}onChange={this.handleChange} />
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Check label="Simple Website" id="Simple Website" onChange={this.handleRadioButtons} />
-                        <Form.Check label="Web App" id="Web App" onChange={this.handleRadioButtons} />
-                        <Form.Check label="Mobile App" id="Mobile App" onChange={this.handleRadioButtons} />
-                        <Form.Check label="Other" id="Other" onChange={this.handleRadioButtons} />
+                        <Form.Check label="Simple Website" id="simpleWebsite" onChange={this.handleRadioButtons} />
+                        <Form.Check label="Web App" id="webApp" onChange={this.handleRadioButtons} />
+                        <Form.Check label="Mobile App" id="mobileApp" onChange={this.handleRadioButtons} />
                     </Form.Group>
 
 

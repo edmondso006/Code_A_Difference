@@ -1,5 +1,4 @@
 Features:
-    + Edit Project (3) DONE
     + Edit Organization information (3)
         + Can only edit organization name currently.
         + Need: Email, Password
@@ -18,6 +17,8 @@ Bugs:
     + Need to refresh all projects in profile page or in general after an edit has been made
     + CreatedAt bug when calling slice on CreatedAt DONE (Storing date as a string instead of a date object in firebase)
     + Firebase errors in console when logging out of application
+    ✅ Must fill out all information error on Edit Project Page DONE
+        + Figure out how to pass radio button data to
 Other:
     + Refactor code and pull out duplicate functions into its own file (2)
     + Fix all imports in reactbootstrap (1)

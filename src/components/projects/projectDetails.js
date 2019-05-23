@@ -16,6 +16,7 @@ const ProjectDetails = (props) => {
   console.log(props);
   if(project){
     return(
+      
       <Container style={{marginTop: '1rem'}}>
         <Row>
           <Col sm={4}>
@@ -25,7 +26,7 @@ const ProjectDetails = (props) => {
                   About {project.organizationName}
                 </Card.Title>
                 <Card.Text>
-                  { project.aboutOrg }
+                  { project.about }
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -33,14 +34,15 @@ const ProjectDetails = (props) => {
 
           <Col sm={8}>
             <Card>
-              <Card.Header>Contact Email: {project.contactEmail}</Card.Header>
-                <Card.Body>
-                  <Card.Title>
+              <Card.Body>
+                <Card.Title>
                   {project.title}
                 </Card.Title>
 
                 <Card.Text>
                   {project.content}
+                  <br />
+                  Contact Email: {project.contactEmail}
                 </Card.Text>
               </Card.Body>
 
@@ -55,7 +57,6 @@ const ProjectDetails = (props) => {
       
         
       </Container>
-      
     )
   } else {
     return(

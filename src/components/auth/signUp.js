@@ -15,7 +15,7 @@ class SignUp extends Component {
     password: '',
     passwordConfirm: '',
     organizationName: '',
-    aboutOrg: ''
+    about: ''
   }
 
   handleChange = (e) => {
@@ -66,7 +66,7 @@ class SignUp extends Component {
 
           <Form.Group >
             <Form.Label>About Your Organization</Form.Label>
-            <Form.Control type="text" as="textarea" placeholder="Tell us, and the developers about your organization (Mission Statement)" id="aboutOrg" onChange={this.handleChange} />
+            <Form.Control type="text" as="textarea" placeholder="Tell us, and the developers about your organization (Mission Statement)" id="about" onChange={this.handleChange} />
           </Form.Group>
 
 
