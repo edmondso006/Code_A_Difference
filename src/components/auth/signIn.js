@@ -9,16 +9,18 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
 class SignIn extends Component {
-
-  state = {
-    email: '',
-    password: ''
+  constructor(props){
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
   }
-
+  
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    })
+    });
   }
 
   handleSubmit = (e) => {

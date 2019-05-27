@@ -10,13 +10,10 @@ import Col from 'react-bootstrap/Col';
 
 import './projectDetails.css';
 
-
 const ProjectDetails = (props) => {
   const { project } = props;
-  console.log(props);
   if(project){
     return(
-      
       <Container style={{marginTop: '1rem'}}>
         <Row>
           <Col sm={4}>
@@ -54,8 +51,6 @@ const ProjectDetails = (props) => {
             </Card>
           </Col>
         </Row>
-      
-        
       </Container>
     )
   } else {

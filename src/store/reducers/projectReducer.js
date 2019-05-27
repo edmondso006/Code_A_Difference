@@ -1,7 +1,8 @@
 const initState = {
-  projects: [
-  ],
-  updateProjectError: null
+  projects: [],
+  updateProjectError: null,
+  createdProjectError: null,
+  deleteProjectError: null,
 }
 
 const projectReducer = (state = initState, action) => {
@@ -11,18 +12,24 @@ const projectReducer = (state = initState, action) => {
       return state;
     case 'CREATE_PROJECT_ERRPR':
       console.log('create project error', action.err);
-      return state;
+      return {
+        ...state,
+        createdProjectError: action.err
+      };
     case 'GET_PROJECTS':
-      //console.log(action.projects);
       return {
         ...state,
         projects: action.projects
       };
     case 'DELETE_PROJECT_SUCCESS':
-      //console.log(action.project);
       return {
         ...state,
         projects: state.projects.filter(project => project !== action.project)
+      }
+    case 'DELETE_PROJECT_ERROR':
+      return {
+        ...state,
+        deleteProjectError: action.err
       }
     case 'UPDATE_PROJECT_SUCCESS':
       return {
@@ -36,7 +43,6 @@ const projectReducer = (state = initState, action) => {
     default:
       return state
   }
-
 }
 
 export default projectReducer;

@@ -14,9 +14,7 @@ const GuideLines = (props) => {
               <li>Gather concrete requirements</li>
               <li>Pick the best technology for the job</li>
             </ul>
-
         </Card.Body>
-        
       </Card>
     </div>
   )

@@ -20,7 +20,6 @@ const SignedInLinks = (props) => {
         <NavLink to="/profile" profile={props.profile} className="nav-link">Profile</NavLink>
       </li>
     </ul>
-  
   )
 }
 

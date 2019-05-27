@@ -24,8 +24,6 @@ const ProjectSummary = ({project}) => {
         </Card.Body>
       </Card>
     </div>
-   
-
   )
 }
 

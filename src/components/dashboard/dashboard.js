@@ -29,6 +29,7 @@ class Dashboard extends Component {
     )
   }
 }
+
 //Map state from store to the props
 const mapStateToProps = (state) => {
   //Return what the props are going to be

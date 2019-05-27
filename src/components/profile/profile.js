@@ -4,7 +4,7 @@ import { getUsersProjects } from '../../store/actions/projectActions';
 import { updateProfile } from './../../store/actions/authActions';
 import ProfileProject from './../profile/profileProject';
 import { Redirect } from 'react-router-dom';
-
+//React-strap imports 
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
@@ -13,7 +13,6 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
 class Profile extends Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -32,7 +31,6 @@ class Profile extends Component {
 
   //Forces the component to render and reset the state when the props are updated
   componentWillReceiveProps = (nextProps) => {
-    console.log(nextProps);
     this.setState({
       name: nextProps.profile.organizationName,
       about: nextProps.profile.about
@@ -48,15 +46,12 @@ class Profile extends Component {
   handleSubmit = (e) => {
     if(this.state.name){
       e.preventDefault();
-      console.log(this.props.profile);
       let updatedProfile = this.props.profile;
       updatedProfile.organizationName = this.state.name;
       updatedProfile.about = this.state.about;
-      console.log(this.props.auth);
       this.props.updateProfile(this.props.auth.uid, updatedProfile);
       this.handleClose();
     }
-
   }
 
   handleClose = () => {
@@ -69,13 +64,16 @@ class Profile extends Component {
 
   render(){
     const { auth, profile, projects, authReducer} = this.props;
+    //If a user is not signed in return them to the sign in page
     if(!auth.uid) return <Redirect to="/signin" />
 
     return (
       <Container style={{marginTop: '3rem'}}>
         <Card>
-          <Card.Header as="h5" >Organization Profile Information</Card.Header>
           <Card.Body>
+            <Card.Title>
+              Organization Profile Information
+            </Card.Title>
             <Card.Text>
               <span className="">Organization Name: {profile.organizationName}</span>
               <br />
@@ -129,16 +127,12 @@ class Profile extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-
-
       </Container>
-
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile,

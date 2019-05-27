@@ -23,7 +23,6 @@ export const createProject = (project) => {
   }
 };
 
-
 export const getUsersProjects = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
@@ -36,10 +35,9 @@ export const getUsersProjects = () => {
           project.id = doc.id;
           projects.push(project);
         });
-        dispatch({type: 'GET_PROJECTS', projects})
+        dispatch({type: 'GET_PROJECTS', projects}) //Should rename this to getUserProjects instead
       })
       .catch(err => {
-        console.log('error');
         dispatch({type: 'GET_PROJECTS_ERROR', err})
       });
   }
@@ -61,14 +59,11 @@ export const deleteProject = (project) => {
 export const updateProject = (projectID, updatedProject) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
- 
-    console.log(updatedProject);
     firestore.collection('projects').doc(`${projectID}`).update(updatedProject)
       .then(() => {
         dispatch({ type: 'UPDATE_PROJECT_SUCCESS'})
       })
       .catch((err) => {
-        console.log(err);
         let errMSG = { message: 'Error updating a project. Please try again in a few moments' }
         dispatch({ type: 'UPDATE_PROJECT_ERROR', errMSG})
       });

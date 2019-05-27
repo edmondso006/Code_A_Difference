@@ -3,26 +3,18 @@ import { connect } from 'react-redux';
 import { Link }  from 'react-router-dom';
 import SignedInLinks from './signedInLinks';
 import SignedOutLinks from './signedOutLinks';
-import { Navbar, Nav } from 'react-bootstrap';
-import Logo from './../../Images/CodeADifference.png';
+
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 
 const NavBar = (props) => {
   const { profile, auth } = props;
-  //console.log(auth);
   const links = auth.uid ? <SignedInLinks profile={profile}/> : <SignedOutLinks />;
-
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>
         <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>CodeADifference</Link>
-        {/* <img
-        src={Logo}
-        width="30"
-        height="30"
-        className="d-inline-block align-top"
-        alt="Logo"
-      /> */}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
@@ -31,12 +23,11 @@ const NavBar = (props) => {
       </Nav> 
       </Navbar.Collapse>
     </Navbar>
-
   )
-
 }
 
 const mapStateToProps = (state) => {
+  //DEBUG CONSOLE LOG
   console.log(state);
   return {
     auth: state.firebase.auth,

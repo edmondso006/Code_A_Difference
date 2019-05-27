@@ -47,7 +47,7 @@ class CreateProject extends Component {
         contactEmail: this.state.contactEmail
       }
       this.props.createProject(project);
-      this.props.history.push('/projects');   //redirect the user to projects page. History is given on the router by default
+      this.props.history.push('/projects');  
     }
   }
 
@@ -61,7 +61,6 @@ class CreateProject extends Component {
   render() {
     const { auth } = this.props;
     if(!auth.uid) return <Redirect to="/signin" />
-    console.log(this.state);
 
     return (
      <Container>

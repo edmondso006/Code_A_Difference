@@ -1,6 +1,6 @@
 export const signIn = (creds) => {
   return (dispatch, getState, { getFirebase }) => {
-    const firebase = getFirebase(); //Intialize firebase
+    const firebase = getFirebase();
 
     firebase.auth().signInWithEmailAndPassword(creds.email, creds.password)
       .then(() => {
@@ -35,7 +35,6 @@ export const signUp = (newUser) => {
       .then((res) => {
         return firestore.collection('users').doc(res.user.uid).set({
           organizationName: newUser.organizationName,
-          initials: newUser.organizationName[0],  //Can probably get rid of
           about: newUser.aboutOrg
         })
       }).then(() => {
@@ -45,7 +44,6 @@ export const signUp = (newUser) => {
         dispatch({ type: 'SIGNUP_ERROR', err})
       })
     } else {
-      console.log('password does not match')
       let err = {message: 'Passwords do not match!'};
       dispatch({ type: 'SIGNUP_ERROR', err})
     }
@@ -64,20 +62,25 @@ export const updateProfile = (profileUID, newInformation) => {
       .then(() => {
         //Perform query to get all of the users projects to update them
         // OH BOY OH BOY THIS PROBS NEEDS REFACTORED 
-        firestore.collection('projects').where('authorid',  '==', authID).get()
+        /* return */ firestore.collection('projects').where('authorid',  '==', authID).get()
           .then((res) => {
             res.forEach(doc => {
               let project = doc.data;
               project.id = doc.id;
-              firestore.collection('projects').doc(`${project.id}`).update(newInformation)
-                .then((res) => console.log(res))
-                .catch((err) => console.log(err));
+              /* return */ firestore.collection('projects').doc(`${project.id}`).update(newInformation)
+                .then((res) => {
 
+                })
+                .catch((err) => {
+                  dispatch({ type: 'UPDATE_ERROR', err})
+                });
             })
+            dispatch({ type: 'UPDATE_SUCCESS'})
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            dispatch({ type: 'UPDATE_ERROR', err})
+          });
 
-          //dispatch({ type: 'UPDATE_SUCCESS'})
       })
       .catch(() => {
         let err = { message: 'Error updating profile. Please try again in a few moments' }

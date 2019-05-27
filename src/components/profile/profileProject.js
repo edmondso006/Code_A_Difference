@@ -73,10 +73,7 @@ class ProfileProject extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-
       </div>
-      
-
     )
   }
   

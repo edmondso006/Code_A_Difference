@@ -11,7 +11,6 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
 class EditProject extends Component {
-
     constructor(props){
         super(props);
         this.state = {
@@ -75,8 +74,8 @@ class EditProject extends Component {
 
     render(){
         const { auth, project } = this.props;
-        console.log(this.props.match.params.id);
-        console.log(this.props);
+        // console.log(this.props.match.params.id);
+        // console.log(this.props);
         if(!auth.uid) return <Redirect to="/signin" />
 
         if(project){     

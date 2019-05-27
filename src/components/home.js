@@ -5,13 +5,17 @@ import CodingImage from './../Images/undraw_coding_6mjf.svg';
 import NonProfitImage from './../Images/undraw_collab_8oes.svg';
 import TeamImage from './../Images/undraw_creative_team_r90h.svg';
 class Home extends Component {
+
+    constructor(props){
+      super(props);
+    }
+
     render(){
         return (
             <div>
               <Jumbotron  className="bg-light" style={{marginBottom: '0px'}}>
-
                 <Container>
-                <img src={TeamImage} alt='team' style={{height: '50%', width: '50%', display: 'block', margin: 'auto'}} />
+                  <img src={TeamImage} alt='team' style={{height: '50%', width: '50%', display: 'block', margin: 'auto'}} />
 
                   <h1>Make A Difference!</h1>
 
@@ -24,8 +28,6 @@ class Home extends Component {
                   </p>
                   <Button variant="outline-dark"><Link to='/projects' style={{textDecoration: 'none', color: 'inherit'}}>View Projects!</Link></Button>
                 </Container>
-                
-
               </Jumbotron>
 
             

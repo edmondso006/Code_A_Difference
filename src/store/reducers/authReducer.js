@@ -1,5 +1,7 @@
 const initState = {
-  authError: null,
+  authError: null,  //Need to make this more specific to either login or signup
+  //authErrorLogin: null,
+  //autherErrorSignUp: null
   updateError: null
 }
 
@@ -33,7 +35,7 @@ const authReducer = (state = initState, action) => {
       console.log('signup error');
       return {
         ...state,
-        authError: action.err.message
+        authError: action.err.message //Change the auth error type here
       }
     case 'UPDATE_SUCCESS':
       console.log('update success');
