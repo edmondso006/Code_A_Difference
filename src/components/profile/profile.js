@@ -11,6 +11,8 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Profile extends Component {
   constructor(props){
@@ -19,6 +21,7 @@ class Profile extends Component {
       show: false,
       name: '',
       about: '',
+      profilePictureUrl: '',
     }
   }
 
@@ -33,14 +36,15 @@ class Profile extends Component {
   componentWillReceiveProps = (nextProps) => {
     this.setState({
       name: nextProps.profile.organizationName,
-      about: nextProps.profile.about
-    })
+      about: nextProps.profile.about,
+      profilePictureUrl: nextProps.profile.profilePictureUrl
+    });
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
-    })
+    });
   }
 
   handleSubmit = (e) => {
@@ -71,18 +75,35 @@ class Profile extends Component {
       <Container style={{marginTop: '3rem'}}>
         <Card>
           <Card.Body>
+            
             <Card.Title>
               Organization Profile Information
             </Card.Title>
-            <Card.Text>
-              <span className="">Organization Name: {profile.organizationName}</span>
-              <br />
-              <span className="">Email: {auth.email}</span>
-              <br />
-              <span>About your organization: {profile.about}</span>
-            </Card.Text>
 
-            <Button onClick={this.handleShow}>Edit</Button>
+            <Container>
+              <Row>
+                <Col xs={4}>
+                  <Card.Img src={this.state.profilePictureUrl} alt="ProfilePicture" />
+                </Col>
+                
+                <Col xs={8}>
+                  <Card.Text>
+                      <span><span style={{fontWeight: '600'}}>Organization Name: </span>{profile.organizationName}</span>
+                      <br />
+                      <span><span style={{fontWeight: '600'}}>Email:  </span>{auth.email}</span>
+                      <br />
+                      <span><span style={{fontWeight: '600'}}>About your organization: </span>{profile.about}</span>
+                   </Card.Text>
+
+                  <Button onClick={this.handleShow}>Edit</Button>
+                </Col>
+                <Col xs={2}>
+
+                </Col>
+              </Row>
+            </Container>
+            
+           
           </Card.Body>
         </Card>
         { authReducer.updateError ? <Alert variant="danger">Error Updating Profile. Please try again later.</Alert> : null }

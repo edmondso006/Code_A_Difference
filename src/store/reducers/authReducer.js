@@ -33,6 +33,7 @@ const authReducer = (state = initState, action) => {
       }
     case 'SIGNUP_ERROR':
       console.log('signup error');
+      console.log(action.err.message);
       return {
         ...state,
         authError: action.err.message //Change the auth error type here

@@ -29,18 +29,21 @@ export const signUp = (newUser) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
-
+    console.log(newUser);
     if(newUser.password === newUser.passwordConfirm){
       firebase.auth().createUserWithEmailAndPassword(newUser.email, newUser.password)
       .then((res) => {
         return firestore.collection('users').doc(res.user.uid).set({
           organizationName: newUser.organizationName,
-          about: newUser.aboutOrg
+          about: newUser.about,
+          signUpDate: Date.now(),
+          profilePictureUrl: newUser.profilePictureUrl
         })
       }).then(() => {
         dispatch({ type: 'SIGNUP_SUCCESS' })
       })
       .catch((err) => {
+        console.log(err);
         dispatch({ type: 'SIGNUP_ERROR', err})
       })
     } else {
@@ -62,12 +65,12 @@ export const updateProfile = (profileUID, newInformation) => {
       .then(() => {
         //Perform query to get all of the users projects to update them
         // OH BOY OH BOY THIS PROBS NEEDS REFACTORED 
-        /* return */ firestore.collection('projects').where('authorid',  '==', authID).get()
+        return firestore.collection('projects').where('authorid',  '==', authID).get()
           .then((res) => {
             res.forEach(doc => {
               let project = doc.data;
               project.id = doc.id;
-              /* return */ firestore.collection('projects').doc(`${project.id}`).update(newInformation)
+              return firestore.collection('projects').doc(`${project.id}`).update(newInformation)
                 .then((res) => {
 
                 })

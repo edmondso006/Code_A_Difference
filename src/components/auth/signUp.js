@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from './../../store/actions/authActions';
-
+import { storage } from './../../config/fbConfig';
 //ReactStrap Imports
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -18,7 +18,10 @@ class SignUp extends Component {
       password: '',
       passwordConfirm: '',
       organizationName: '',
-      about: ''
+      about: '',
+      profilePictureUrl: '',
+      profilePicture: null,
+      profilePictureErr: null
     }
   }
 
@@ -30,8 +33,42 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.signUp(this.state);
+
+    const uploadTask = storage.ref(`images/${this.state.profilePicture.name}`).put(this.state.profilePicture);
+
+    uploadTask.on('state_changed',
+    (snapshot) => {
+      //Progress
+      console.log('progress');
+    },
+    (error) => {
+      //Failure
+      console.log('error');
+      console.log(error);
+    },
+    () => {
+      console.log('success')
+      //Success
+      uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+        console.log(url);
+        this.setState({
+          profilePictureUrl: url
+        });
+        this.props.signUp(this.state);
+      });
+    });
+   
   }
+
+  fileSelectedHandler = (e) => {
+
+    if(e.target.files[0]){
+      this.setState({
+        profilePicture: e.target.files[0]
+      });
+    } 
+  } 
+  
 
   render() {
     const { authError, auth } = this.props;
@@ -73,6 +110,11 @@ class SignUp extends Component {
             <Form.Control type="text" as="textarea" placeholder="Tell us, and the developers about your organization (Mission Statement)" id="about" onChange={this.handleChange} />
           </Form.Group>
 
+          <Form.Group>
+            <Form.Label>Upload your organization logo</Form.Label>
+            <br />
+            <input type="file" onChange={this.fileSelectedHandler} accept="image/*" />
+          </Form.Group>
           <Button variant="primary" type="submit">
             Submit
           </Button>

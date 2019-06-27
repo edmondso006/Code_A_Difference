@@ -1,17 +1,4 @@
-Features:
-    + Edit Organization information (3)
-        + Can only edit organization name currently.
-        + Need: Email, Password
-            + Will need to send reset email to users email
-    + Redo profile page - Work 
-    + Projects page (3) 
-    + Ordering of projects in dashboard (1)
-    + Fix active in navbar (1) - Work
-    + Add confirmation box to logout button before it actually logs you out (2)
-    + Ability to add Organization profile picture (3)
-    + Filter projects by category (2)
-    + Tags for projects (3)
-    + Write unit tests
+
 Bugs:
     + Firebase errors in console when logging out of application
     ✅ Must fill out all information error on Edit Project Page DONE
@@ -19,5 +6,6 @@ Bugs:
     + Refactor code 
     + IF invalid login error will show in signup because there is not a difference between
         + Login error and Signup error in reducer
+    + Valdiation on profile picture upload
 Other:
     + Refactor code and pull out duplicate functions into its own file (2)
